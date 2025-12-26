@@ -73,7 +73,6 @@ Synthetic-Image-Detector/
 ├── notebooks/
 │ ├── Synthetic_Image_Detection_v0.1.ipynb
 │ ├── Synthetic_Image_Detection_v0.2.ipynb
-│ └── Synthetic_Image_Detection_v0.3.ipynb
 │
 ├── requirements.txt
 ├── LICENSE
