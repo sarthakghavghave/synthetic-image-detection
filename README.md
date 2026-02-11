@@ -1,7 +1,7 @@
 # 🧠 Synthetic Image Detector
 
 A deep learning system for detecting AI-generated (synthetic) images using **Convolutional Neural Networks (CNNs)** built with **PyTorch framework**.  
-The project begins with a baseline CNN and progressively moves toward transfer learning and advanced architectures.
+The project currently focuses on baseline CNN model.
 
 ---
 
