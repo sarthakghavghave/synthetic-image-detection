@@ -1,64 +1,91 @@
-# 🧠 Synthetic Image Detector
+# Synthetic Image Detector
 
-A deep learning system for detecting AI-generated (synthetic) images using **Convolutional Neural Networks (CNNs)** built with **PyTorch framework**.  
-The project currently focuses on baseline CNN model.
+Baseline convolutional neural network (CNN) for detecting AI-generated images using the GenImage dataset.
+
+This project investigates whether a custom CNN trained on multiple generators (BigGAN, VQDM) can generalize to unseen generators (ADM).
 
 ---
 
-## 📂 Project Overview
-This project aims to build a **robust classifier** capable of distinguishing real (natural) images from synthetic (AI-generated) ones across multiple generation models such as **BigGAN**, **VQDM**, and **ADM**.
+## Problem Statement
 
-The main goals are:
-- Understand low-level visual artifacts left by different image generators.
-- Develop a CNN baseline capable of generalizing to unseen generators.
-- Improve performance through **transfer learning** and **ensemble methods** in future iterations.
+Recent generative models (GANs, diffusion models) produce highly realistic synthetic images.  
+This project explores whether low-level visual artifacts can be learned by a CNN to distinguish:
+
+- **AI-generated images**
+- **Natural (real) images**
+
+The focus is on **cross-generator generalization** rather than single-generator accuracy.
 
 ---
 
 ## Dataset
+
 **GenImage: A Million-Scale Benchmark for Detecting AI-Generated Images**
 
-- Source: [GenImage GitHub Repository](https://github.com/GenImage-Dataset/GenImage)
-- The dataset includes synthetic and natural images from multiple generation models:
-  - **BigGAN**
-  - **VQDM**
-  - **ADM**
-  - *(and more like Stable Diffusion, GLIDE, etc.)*
-- Images are resized to **224×224** for standardization.
+Source: https://github.com/GenImage-Dataset/GenImage
+
+Training generators:
+- BigGAN
+- VQDM
+
+Unseen evaluation generator:
+- ADM
+
+Images are resized to 224×224 resolution.
 
 ---
 
-## Current Version — `Synthetic_Image_Detection_v0.x`
-Baseline CNN implementation (**SimpleCNN_v2**) with:
-- Batch Normalization and Dropout for stability.
-- Mixed Precision Training for efficiency.
-- Early Stopping, Checkpointing, and Learning Rate Scheduling.
-- Grad-CAM support for visual explainability.
+## Model (v0.x Baseline)
 
-### Training Setup
-- Train on: **BigGAN + VQDM**
-- Validate on: **ADM** *(unseen generator for testing generalization)*
+Architecture: `SimpleCNN_v2`
+
+Key components:
+- 3 convolutional blocks (Conv + BatchNorm + ReLU + MaxPool)
+- Global Average Pooling
+- Fully connected classifier
+- Dropout regularization
+- BCEWithLogitsLoss
+
+Training features:
+- Mixed precision (AMP)
+- ReduceLROnPlateau scheduler
+- Early stopping (patience = 3)
+- Checkpointing and resume support
+- Grad-CAM compatibility
 
 ---
 
-## Future Plans
-- Transfer learning using pre-trained architectures (ResNet, EfficientNet).
-- Larger training set covering more generators.
-- Implement **Ensemble Learning** for improved robustness.
-- Visualization dashboard for Grad-CAM and metrics tracking.
+## Experimental Setup
+
+- Train: BigGAN + VQDM
+- Validate: ADM (unseen generator)
+- Optimizer: Adam (lr = 1e-4, weight_decay = 1e-4)
+- Batch size: 64
+- Early stopping enabled
+
+The goal is to measure generalization across generator families.
+
+---
+
+## Future Work
+
+- Transfer learning (ResNet / EfficientNet)
+- Larger multi-generator training set
+- Ensemble-based detector
+- Robustness evaluation under compression and noise
 
 ---
 
 ## Tech Stack
-- **Language:** Python 3.11.0
-- **Frameworks:** PyTorch, torchvision
-- **Visualization:** Matplotlib, tqdm
-- **Environment:** VS Code with CUDA virtual environment
+
+- Python 3.11
+- PyTorch (`torch`, `torchvision`)
+- Matplotlib
+- tqdm
 
 ---
 
-## 📁 Folder Structure
-```markdown
+## Project Structure
 Synthetic-Image-Detector/
 │
 ├── datasets/
@@ -77,8 +104,3 @@ Synthetic-Image-Detector/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
-```
-
-
-Sarthak Ghavghave
-AI & Machine Learning Enthusiast
