@@ -87,20 +87,21 @@ The goal is to measure generalization across generator families.
 ---
 
 ## Project Structure
+```
 Synthetic-Image-Detector/
 │
 ├── datasets/
-│ └── GenImage/
-│ └── BigGAN+VQDM/
+│   └── GenImage/
+│       └── BigGAN+VQDM/
 │
 ├── models/
-│ └── checkpoints/
-│   ├── best_checkpoint.pth
-│   └── last_checkpoint.pth
+│   └── checkpoints/
+│       ├── best_checkpoint.pth
+│       └── last_checkpoint.pth
 │
 ├── notebooks/
-│ ├── Synthetic_Image_Detection_v0.1.ipynb
-│ └── Synthetic_Image_Detection_v0.2.ipynb
+│   ├── Synthetic_Image_Detection_v0.1.ipynb
+│   └── Synthetic_Image_Detection_v0.2.ipynb
 │
 ├── requirements.txt
 ├── LICENSE
