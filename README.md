@@ -1,4 +1,4 @@
-# Synthetic Image Detector
+# Synthetic Image Detection
 
 Baseline convolutional neural network (CNN) for detecting AI-generated images using the GenImage dataset.
 
@@ -6,7 +6,8 @@ This project investigates whether a custom CNN trained on multiple generators (B
 
 ---
 
-## Problem Statement
+## Project Overview
+This project aims to build a **robust classifier** capable of distinguishing real (natural) images from synthetic (AI-generated) ones across multiple generation models such as **BigGAN**, **VQDM**, and **ADM**.
 
 Recent generative models (GANs, diffusion models) produce highly realistic synthetic images.  
 This project explores whether low-level visual artifacts can be learned by a CNN to distinguish:
@@ -99,8 +100,9 @@ Synthetic-Image-Detector/
 │
 ├── notebooks/
 │ ├── Synthetic_Image_Detection_v0.1.ipynb
-│ ├── Synthetic_Image_Detection_v0.2.ipynb
+│ └── Synthetic_Image_Detection_v0.2.ipynb
 │
 ├── requirements.txt
 ├── LICENSE
 └── README.md
+```
